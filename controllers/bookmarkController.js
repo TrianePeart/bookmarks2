@@ -23,7 +23,7 @@ bookmarks.get("/:id", async (req, res) => {
   const bookmark = await getBookmark(id);
   console.log("bookmark", bookmark);
   if (!bookmark.message) {
-    res.status(200).res.json(bookmark);
+    res.status(200).json(bookmark);
   } else {
     res.status(404).json({ error: "not found" });
   }
@@ -33,7 +33,7 @@ bookmarks.get("/:id", async (req, res) => {
 bookmarks.post("/", checkName, checkBoolean, async (req, res) => {
   try {
     const bookmark = await createBookmark(req.body);
-    res.status(200).res.json(bookmark);
+    res.status(200).json(bookmark);
   } catch (error) {
     res.status(500).json({ error: error });
   }
